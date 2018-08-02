@@ -80,7 +80,7 @@ def sentinel_ping(energid):
     printdbg("leaving sentinel_ping")
 
 def attempt_superblock_creation(energid):
-    if not energilib.hasattr('is_masternode'):
+    if not energilib.hasattr('create_superblock'):
         printdbg('super block could not be created without `energilib` dependency')
         return
     
