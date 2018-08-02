@@ -18,6 +18,11 @@ import random
 from scheduler import Scheduler
 import argparse
 
+try:
+    import energilib
+except ImportError:
+    energilib = None
+
 
 # sync energid gobject list with our local relational DB backend
 def perform_energid_object_sync(energid):
@@ -75,8 +80,10 @@ def sentinel_ping(energid):
     printdbg("leaving sentinel_ping")
 
 def attempt_superblock_creation(energid):
-    import energilib
-
+    if not energilib.hasattr('is_masternode'):
+        printdbg('super block could not be created without `energilib` dependency')
+        return
+    
     if not energid.is_masternode():
         print("We are not a Masternode... can't submit superblocks!")
         return
