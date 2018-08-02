@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
-sys.path.append(os.path.normpath(os.path.join(os.path.dirname(__file__), '../lib')))
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 import init
 import config
 import misc
